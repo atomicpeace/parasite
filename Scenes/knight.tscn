@@ -1,0 +1,120 @@
+[gd_scene load_steps=12 format=3 uid="uid://hvph0dl1e1xm"]
+
+[ext_resource type="Script" path="res://Scripts/Knight.gd" id="1_67146"]
+[ext_resource type="Script" path="res://Scripts/Head.gd" id="2_dygys"]
+[ext_resource type="PackedScene" uid="uid://5lr51skl5dc3" path="res://Scenes/Sword.tscn" id="3_4bnqq"]
+[ext_resource type="Script" path="res://Scripts/Weapon.gd" id="3_b8rcd"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1rq3n"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_50e1p"]
+points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+
+[sub_resource type="Animation" id="Animation_dh86v"]
+resource_name = "Swing"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.6, 0.7, 0.8, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.52891, 1.55603, -3.14159), Vector3(1.31665, 2.97428, -1.71806), Vector3(1.00432, 3.06349, -1.62196), Vector3(0.838569, 3.07892, -1.60265), Vector3(0.838569, 3.07892, -1.60265), Vector3(1.01191, 3.06255, -1.62308), Vector3(1.19816, 3.02633, -1.66343), Vector3(1.48317, 2.64274, -2.05326), Vector3(1.29678, 0.181514, -1.46608), Vector3(0.858702, 0.0645772, -1.46608), Vector3(0.397935, 0.0453786, -1.60396), Vector3(0.240855, 0.0436332, -1.59523), Vector3(0.00523599, 0.0418879, -1.5865)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.59, 0.7, 0.8, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.340849, -0.0698361, -0.664948), Vector3(0.341, 0.1, -0.665), Vector3(0.341, 0.0999999, -0.48524), Vector3(0.341, 0.0999999, -0.327956), Vector3(0.367699, 0.102892, -0.166271), Vector3(0.367699, 0.183821, -0.258689), Vector3(0.367699, 0.265866, -0.30742), Vector3(0.367699, 0.344409, -0.463292), Vector3(0.367699, 0.344409, -0.54608), Vector3(0.367699, 0.281993, -0.739177), Vector3(0.367699, 0.0170345, -0.816764), Vector3(0.367699, -0.0509057, -0.953836), Vector3(0.367699, -0.124587, -1.05089)]
+}
+
+[sub_resource type="Animation" id="Animation_udvhx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.367699, 0.102892, -0.166271)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.838569, 3.07892, -1.60265)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u350n"]
+_data = {
+"RESET": SubResource("Animation_udvhx"),
+"Swing": SubResource("Animation_dh86v")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yooim"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d3qg0"]
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("ShaderMaterial_yooim")
+
+[node name="Knight" type="Node3D"]
+
+[node name="Knight" type="CharacterBody3D" parent="."]
+script = ExtResource("1_67146")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Knight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.82265, 0)
+mesh = SubResource("CapsuleMesh_1rq3n")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Knight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.77991, 0)
+shape = SubResource("ConvexPolygonShape3D_50e1p")
+
+[node name="Head" type="Node3D" parent="Knight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.71009, 0)
+script = ExtResource("2_dygys")
+
+[node name="Camera3D" type="Camera3D" parent="Knight/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00326502, -0.0895863, -0.617324)
+current = true
+fov = 53.5
+
+[node name="Weapon" type="Node3D" parent="Knight/Head/Camera3D"]
+script = ExtResource("3_b8rcd")
+
+[node name="Sword" parent="Knight/Head/Camera3D/Weapon" instance=ExtResource("3_4bnqq")]
+transform = Transform3D(-0.0147651, -0.999013, 0.0418704, -0.668188, -0.0212936, -0.743687, 0.743845, -0.0389579, -0.667215, 0.367699, 0.102892, -0.166271)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Knight/Head/Camera3D/Weapon/Sword"]
+reset_on_save = false
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_u350n")
+}
+speed_scale = 4.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Knight/Head/Camera3D"]
+transform = Transform3D(-0.998297, -0.0578755, 0.00727239, 0, 0.124675, 0.992198, -0.0583307, 0.990508, -0.124463, -0.00371313, -0.00191736, -0.157112)
+mesh = SubResource("PlaneMesh_d3qg0")
+
+[connection signal="animation_finished" from="Knight/Head/Camera3D/Weapon/Sword/AnimationPlayer" to="Knight/Head/Camera3D/Weapon" method="_on_animation_player_animation_finished"]

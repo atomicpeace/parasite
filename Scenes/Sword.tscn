@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://5lr51skl5dc3"]
+
+[ext_resource type="PackedScene" uid="uid://ddp88tovi3n0u" path="res://Models/GreatSword/GreatSword.gltf" id="1_sw6dg"]
+
+[node name="Root Scene" instance=ExtResource("1_sw6dg")]
