@@ -1,0 +1,10 @@
+[gd_resource type="BoxMesh" load_steps=3 format=3 uid="uid://bh0t5crnvsfop"]
+
+[ext_resource type="Texture2D" uid="uid://byha6dj4nk0vp" path="res://Textures/CASTLEBRICKS.png" id="1_x1evr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sof1l"]
+albedo_texture = ExtResource("1_x1evr")
+uv1_scale = Vector3(5.965, 5.965, 5.965)
+
+[resource]
+material = SubResource("StandardMaterial3D_sof1l")

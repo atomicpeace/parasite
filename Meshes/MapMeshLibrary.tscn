@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cibvxqrpp0npy"]
+
+[ext_resource type="BoxMesh" uid="uid://bh0t5crnvsfop" path="res://Meshes/new_box_mesh.tres" id="1_vcmdl"]
+[ext_resource type="Script" path="res://Meshes/MeshInstance3D.gd" id="2_y7hw6"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u8cep"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kpchs"]
+
+[node name="MapMeshLibrary" type="Node3D"]
+
+[node name="Brick" type="MeshInstance3D" parent="."]
+visible = false
+mesh = ExtResource("1_vcmdl")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Brick"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Brick/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_u8cep")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.809987, 0, 0, 0, 0.779329, 0, 0, 0, 0.809987, 0, 0, 0)
+mesh = SubResource("ArrayMesh_kpchs")
+script = ExtResource("2_y7hw6")

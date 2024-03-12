@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://nxryl0utf7u3"]
+
+[ext_resource type="PackedScene" uid="uid://c3eq71f0cdmdq" path="res://Models/Torch/torch.glb" id="1_ql72l"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_ql72l")]
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
