@@ -1,0 +1,11 @@
+[gd_resource type="PlaneMesh" load_steps=3 format=3 uid="uid://dtqqqiwk4juby"]
+
+[ext_resource type="Texture2D" uid="uid://dylcymblw5ch5" path="res://Textures/Fire/fire.tres" id="1_osdgg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s01bd"]
+albedo_color = Color(1, 0.984314, 0.552941, 0)
+albedo_texture = ExtResource("1_osdgg")
+
+[resource]
+material = SubResource("StandardMaterial3D_s01bd")
+size = Vector2(1, 1)

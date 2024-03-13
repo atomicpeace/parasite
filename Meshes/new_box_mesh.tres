@@ -7,4 +7,5 @@ albedo_texture = ExtResource("1_x1evr")
 uv1_scale = Vector3(5.965, 5.965, 5.965)
 
 [resource]
+lightmap_size_hint = Vector2i(14, 21)
 material = SubResource("StandardMaterial3D_sof1l")

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bck01fxow020t"
-path.s3tc="res://.godot/imported/SLIMBRICKS.png-901450e3c299722e9a06c00e1e7428ac.s3tc.ctex"
+uid="uid://nqqjo4rkrol1"
+path.s3tc="res://.godot/imported/Fire+Sparks7.png-03422d0dfe3ad6c1f164f6a83a8937f1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/SLIMBRICKS.png"
-dest_files=["res://.godot/imported/SLIMBRICKS.png-901450e3c299722e9a06c00e1e7428ac.s3tc.ctex"]
+source_file="res://Textures/Fire/Fire+Sparks7.png"
+dest_files=["res://.godot/imported/Fire+Sparks7.png-03422d0dfe3ad6c1f164f6a83a8937f1.s3tc.ctex"]
 
 [params]
 

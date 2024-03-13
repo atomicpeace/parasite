@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://hvph0dl1e1xm"]
+[gd_scene load_steps=19 format=3 uid="uid://hvph0dl1e1xm"]
 
 [ext_resource type="Script" path="res://Scripts/Knight.gd" id="1_67146"]
 [ext_resource type="Script" path="res://Scripts/Head.gd" id="2_dygys"]
@@ -88,25 +88,66 @@ shader_parameter/threshold3 = 0.6
 lightmap_size_hint = Vector2i(12, 12)
 material = SubResource("ShaderMaterial_yooim")
 
+[sub_resource type="Curve" id="Curve_tir6n"]
+_data = [Vector2(0, 0.0879121), 0.0, 0.0, 0, 0, Vector2(0.253623, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.032967), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tujtj"]
+width = 2048
+curve = SubResource("Curve_tir6n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ye5c7"]
+emission_shape = 1
+emission_sphere_radius = 0.05
+angle_min = 360.0
+angle_max = 720.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 5.0
+initial_velocity_max = 7.0
+angular_velocity_min = -720.0
+angular_velocity_max = 317.59
+radial_velocity_min = 2.0
+radial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_max = 892.57
+scale_curve = SubResource("CurveTexture_tujtj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fyhle"]
+transparency = 2
+alpha_scissor_threshold = 0.14
+alpha_antialiasing_mode = 0
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.964706, 1, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_43y2r"]
+material = SubResource("StandardMaterial3D_fyhle")
+size = Vector2(0.02, 0.02)
+
 [node name="Knight" type="Node3D"]
 
 [node name="Knight" type="CharacterBody3D" parent="."]
 script = ExtResource("1_67146")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Knight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.82265, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.919884, 0)
 mesh = SubResource("CapsuleMesh_1rq3n")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Knight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.77991, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.877144, 0)
 shape = SubResource("ConvexPolygonShape3D_50e1p")
 
 [node name="Head" type="Node3D" parent="Knight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.71009, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 4.71009, 0)
 script = ExtResource("2_dygys")
 
 [node name="Camera3D" type="Camera3D" parent="Knight/Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00326502, -0.0895863, -0.617324)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00326502, -2.99235, -0.617324)
 current = true
 fov = 53.5
 
@@ -132,7 +173,7 @@ transform = Transform3D(-0.998297, -0.0578755, 0.00727239, 0, 0.124675, 0.992198
 mesh = SubResource("PlaneMesh_d3qg0")
 
 [node name="Torch" type="OmniLight3D" parent="Knight/Head"]
-transform = Transform3D(0.995973, 0, -0.0896592, 0, 1, 0, 0.0896592, 0, 0.995973, -0.00691035, -0.188461, 0.0974951)
+transform = Transform3D(0.995973, 0, -0.0896592, 0, 1, 0, 0.0896592, 0, 0.995973, -0.00691035, -3.09123, 0.0974951)
 light_energy = 16.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
@@ -144,5 +185,16 @@ light_energy = 16.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 distance_fade_enabled = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Knight/Head/Torch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.502788, 0.0476189, -1.20892)
+amount = 200
+lifetime = 0.05
+randomness = 1.0
+interpolate = false
+local_coords = true
+draw_order = 3
+process_material = SubResource("ParticleProcessMaterial_ye5c7")
+draw_pass_1 = SubResource("QuadMesh_43y2r")
 
 [connection signal="animation_finished" from="Knight/Head/Camera3D/Weapon/Sword/AnimationPlayer" to="Knight/Head/Camera3D/Weapon" method="_on_animation_player_animation_finished"]
