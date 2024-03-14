@@ -1,22 +1,56 @@
-[gd_scene load_steps=4 format=3 uid="uid://qdkk7a0t8w0"]
+[gd_scene load_steps=8 format=3 uid="uid://qdkk7a0t8w0"]
 
 [ext_resource type="Script" path="res://Scenes/Area3D.gd" id="1_pqgxx"]
+[ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_snyqv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_how2j"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nrg51"]
 
+[sub_resource type="Animation" id="Animation_iacsr"]
+resource_name = "float"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1, 0), Vector3(0, 0, 0), Vector3(0, 1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1pk61"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bsyer"]
+_data = {
+"RESET": SubResource("Animation_1pk61"),
+"float": SubResource("Animation_iacsr")
+}
+
 [node name="Enemy" type="Node3D"]
+script = ExtResource("1_snyqv")
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.471644, 0)
 script = ExtResource("1_pqgxx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.985927, 0)
 shape = SubResource("CapsuleShape3D_how2j")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.985927, 0)
 mesh = SubResource("CapsuleMesh_nrg51")
 skeleton = NodePath("")
 
-[node name="RayCast3D" type="RayCast3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.769, 0)
+[node name="enemy_animations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bsyer")
+}
+speed_scale = 0.51

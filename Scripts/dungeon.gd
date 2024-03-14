@@ -5,7 +5,7 @@ var pauseInstance;
 var paused = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	var knightInstance = knight.instantiate();
 	add_child(knightInstance)
 	pass # Replace with function body.
@@ -13,8 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(!pauseInstance):
-		paused = false
+	
 	pass
 	
 func _input(event):

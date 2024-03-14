@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://b5up0g7f33h8d"]
+[gd_scene load_steps=2 format=3 uid="uid://b5up0g7f33h8d"]
+
+[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_flt1l"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -7,3 +9,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_flt1l")
+
+[node name="Main" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 233.0
+offset_right = 815.0
+offset_bottom = 501.0
+
+[node name="Start" type="Button" parent="Main"]
+layout_mode = 2
+text = "Start
+"
+
+[node name="Options" type="Button" parent="Main"]
+layout_mode = 2
+text = "Options
+"
+
+[node name="Quit" type="Button" parent="Main"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 126.0
+offset_right = 612.0
+offset_bottom = 153.0
+text = "FLESH DEEP"

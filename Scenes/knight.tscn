@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://hvph0dl1e1xm"]
+[gd_scene load_steps=23 format=3 uid="uid://hvph0dl1e1xm"]
 
 [ext_resource type="Script" path="res://Scripts/Knight.gd" id="1_67146"]
 [ext_resource type="Script" path="res://Scripts/Head.gd" id="2_dygys"]
@@ -24,7 +24,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.367699, 0.102892, -0.166271)]
+"values": [Vector3(0.341, -0.07, -0.665)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -36,7 +36,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.838569, 3.07892, -1.60265)]
+"values": [Vector3(1.52891, 1.55683, -3.14159)]
 }
 
 [sub_resource type="Animation" id="Animation_dh86v"]
@@ -67,26 +67,15 @@ tracks/1/keys = {
 "values": [Vector3(0.340849, -0.0698361, -0.664948), Vector3(0.341, 0.1, -0.665), Vector3(0.341, 0.0999999, -0.48524), Vector3(0.341, 0.0999999, -0.327956), Vector3(0.367699, 0.102892, -0.166271), Vector3(0.367699, 0.183821, -0.258689), Vector3(0.367699, 0.265866, -0.30742), Vector3(0.367699, 0.344409, -0.463292), Vector3(0.367699, 0.344409, -0.54608), Vector3(0.367699, 0.281993, -0.739177), Vector3(0.367699, 0.0170345, -0.816764), Vector3(0.367699, -0.0509057, -0.953836), Vector3(0.367699, -0.124587, -1.05089)]
 }
 
+[sub_resource type="Animation" id="Animation_m70c0"]
+resource_name = "Rebuke"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u350n"]
 _data = {
 "RESET": SubResource("Animation_udvhx"),
+"Rebuke": SubResource("Animation_m70c0"),
 "Swing": SubResource("Animation_dh86v")
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yooim"]
-render_priority = 0
-shader = ExtResource("5_pskeb")
-shader_parameter/level1 = Color(0.266667, 0.00392157, 0.00392157, 1)
-shader_parameter/level2 = Color(0.435294, 0.0235294, 0.141176, 1)
-shader_parameter/level3 = Color(1, 0.823529, 0.772549, 1)
-shader_parameter/level4 = Color(1, 1, 1, 1)
-shader_parameter/threshold1 = 0.1
-shader_parameter/threshold2 = 0.4
-shader_parameter/threshold3 = 0.6
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_d3qg0"]
-lightmap_size_hint = Vector2i(12, 12)
-material = SubResource("ShaderMaterial_yooim")
 
 [sub_resource type="Curve" id="Curve_tir6n"]
 _data = [Vector2(0, 0.0879121), 0.0, 0.0, 0, 0, Vector2(0.253623, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.032967), 0.0, 0.0, 0, 0]
@@ -129,6 +118,81 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_fyhle")
 size = Vector2(0.02, 0.02)
 
+[sub_resource type="Animation" id="Animation_jww2f"]
+resource_name = "Exorcise"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.0101754, -0.0988798, 0.714819), Vector3(0.0429675, -0.00511754, 0.622884), Vector3(0.0885549, 0.117273, 0.492897), Vector3(0.248195, 0.117273, 0.302491)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.0897797, 0), Vector3(0, -0.0897797, 0), Vector3(0, -0.0897797, 0), Vector3(0, -0.0897797, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kqsuj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0429675, -0.00511754, 0.622884)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.0897797, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g2dq3"]
+_data = {
+"Exorcise": SubResource("Animation_jww2f"),
+"RESET": SubResource("Animation_kqsuj")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yooim"]
+render_priority = 0
+shader = ExtResource("5_pskeb")
+shader_parameter/level1 = Color(0.266667, 0.00392157, 0.00392157, 1)
+shader_parameter/level2 = Color(0.435294, 0.0235294, 0.141176, 1)
+shader_parameter/level3 = Color(1, 0.823529, 0.772549, 1)
+shader_parameter/level4 = Color(1, 1, 1, 1)
+shader_parameter/threshold1 = 0.1
+shader_parameter/threshold2 = 0.4
+shader_parameter/threshold3 = 0.6
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d3qg0"]
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("ShaderMaterial_yooim")
+
 [node name="Knight" type="Node3D"]
 
 [node name="Knight" type="CharacterBody3D" parent="."]
@@ -139,7 +203,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.9
 mesh = SubResource("CapsuleMesh_1rq3n")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Knight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.877144, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.877144, -0.00033015)
 shape = SubResource("ConvexPolygonShape3D_50e1p")
 
 [node name="Head" type="Node3D" parent="Knight"]
@@ -150,14 +214,15 @@ script = ExtResource("2_dygys")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00326502, -2.99235, -0.617324)
 current = true
 fov = 53.5
+far = 54.17
 
 [node name="Weapon" type="Node3D" parent="Knight/Head/Camera3D"]
 script = ExtResource("3_b8rcd")
 
 [node name="Sword" parent="Knight/Head/Camera3D/Weapon" instance=ExtResource("3_4bnqq")]
-transform = Transform3D(-0.014769, -0.999013, 0.041871, -0.668188, -0.0212915, -0.743687, 0.743845, -0.0389612, -0.667215, 0.367699, 0.102892, -0.166271)
+transform = Transform3D(-0.013962, -0.999024, 0.0418716, 3.66089e-09, -0.0418757, -0.999122, 0.999902, -0.0139498, 0.000584674, 0.341, -0.07, -0.665)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Knight/Head/Camera3D/Weapon/Sword"]
+[node name="SwordAnim" type="AnimationPlayer" parent="Knight/Head/Camera3D/Weapon/Sword"]
 reset_on_save = false
 root_node = NodePath("../..")
 libraries = {
@@ -165,28 +230,21 @@ libraries = {
 }
 speed_scale = 4.0
 
-[node name="Sketchfab_Scene" parent="Knight/Head/Camera3D/Weapon" instance=ExtResource("5_v0jv2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.424101, -0.453177, -0.529425)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Knight/Head/Camera3D"]
-transform = Transform3D(-0.998297, -0.0578755, 0.00727239, 0, 0.124675, 0.992198, -0.0583307, 0.990508, -0.124463, -0.00371313, -0.00191736, -0.157112)
-mesh = SubResource("PlaneMesh_d3qg0")
-
-[node name="Torch" type="OmniLight3D" parent="Knight/Head"]
-transform = Transform3D(0.995973, 0, -0.0896592, 0, 1, 0, 0.0896592, 0, 0.995973, -0.00691035, -3.09123, 0.0974951)
+[node name="Torch" type="OmniLight3D" parent="Knight/Head/Camera3D/Weapon"]
+transform = Transform3D(0.995973, 0, -0.0896592, 0, 1, 0, 0.0896592, 0, 0.995973, 0.0429675, -0.00511754, 0.622884)
 light_energy = 16.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 distance_fade_enabled = true
 
-[node name="Torch" type="OmniLight3D" parent="Knight/Head/Torch"]
-transform = Transform3D(0.995973, 0, -0.0896592, 0, 1, 0, 0.0896592, 0, 0.995973, -0.20511, -0.188461, -2.10419)
+[node name="Torch" type="OmniLight3D" parent="Knight/Head/Camera3D/Weapon/Torch"]
+transform = Transform3D(0.995972, 0, -0.0896592, 0, 1, 0, 0.0896592, 0, 0.995972, -0.20511, -0.188461, -2.10419)
 light_energy = 16.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 distance_fade_enabled = true
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Knight/Head/Torch"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Knight/Head/Camera3D/Weapon/Torch"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.502788, 0.0476189, -1.20892)
 amount = 200
 lifetime = 0.05
@@ -197,4 +255,17 @@ draw_order = 3
 process_material = SubResource("ParticleProcessMaterial_ye5c7")
 draw_pass_1 = SubResource("QuadMesh_43y2r")
 
-[connection signal="animation_finished" from="Knight/Head/Camera3D/Weapon/Sword/AnimationPlayer" to="Knight/Head/Camera3D/Weapon" method="_on_animation_player_animation_finished"]
+[node name="TorchAnim" type="AnimationPlayer" parent="Knight/Head/Camera3D/Weapon/Torch"]
+libraries = {
+"": SubResource("AnimationLibrary_g2dq3")
+}
+
+[node name="Sketchfab_Scene" parent="Knight/Head/Camera3D/Weapon/Torch" instance=ExtResource("5_v0jv2")]
+transform = Transform3D(0.995973, 0, 0.0896592, 0, 1, 0, -0.0896592, 0, 0.995973, -0.523816, -0.354297, -1.20212)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Knight/Head/Camera3D"]
+transform = Transform3D(-0.998297, -0.0578755, 0.00727239, 0, 0.124675, 0.992198, -0.0583307, 0.990508, -0.124463, -0.00371313, -0.00191736, -0.157112)
+mesh = SubResource("PlaneMesh_d3qg0")
+
+[connection signal="animation_finished" from="Knight/Head/Camera3D/Weapon/Sword/SwordAnim" to="Knight/Head/Camera3D/Weapon" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Knight/Head/Camera3D/Weapon/Torch/TorchAnim" to="Knight/Head/Camera3D/Weapon" method="_on_animation_player_animation_finished"]

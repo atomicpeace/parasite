@@ -1,12 +1,12 @@
 extends Node3D
 
-var sword;
-var animation;
+@onready var sword = $Sword;
+@onready var animation_sword = $'Sword/SwordAnim';
+@onready var animation_torch = $'Torch/TorchAnim'
 var resetswing = false;
+var resettorch = false;
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	sword = $Sword
-	animation = $'Sword/AnimationPlayer'
 	pass # Replace with function body.
 
 
@@ -17,7 +17,11 @@ func _process(delta):
 func _input(event):
 	if(event.is_action_pressed("LEFT_CLICK")):
 		resetswing = true
-		animation.play("Swing")
+		animation_sword.play("Swing")
+	if(event.is_action_pressed("RIGHT_CLICK")):
+		resettorch = true
+		animation_torch.play("Exorcise")
+		pass
 		
 			
 
@@ -25,5 +29,8 @@ func _input(event):
 func _on_animation_player_animation_finished(anim_name):
 	if(anim_name == "Swing" && resetswing):
 		resetswing = false
-		animation.play_backwards(anim_name)
+		animation_sword.play_backwards(anim_name)
+	if(anim_name == "Exorcise" && resettorch):
+		resettorch = false
+		animation_torch.play_backwards(anim_name)
 	pass # Replace with function body.
