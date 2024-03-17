@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://hvph0dl1e1xm" path="res://Scenes/knight.tscn" id="2_jg1bx"]
 [ext_resource type="PackedScene" uid="uid://qdkk7a0t8w0" path="res://Scenes/enemy.tscn" id="3_n2u7t"]
 [ext_resource type="AudioStream" uid="uid://bslwedi5lcwjd" path="res://Audio/WANDERDEEP.ogg" id="5_cr1km"]
-[ext_resource type="PackedScene" uid="uid://cxefe1ckmt6xx" path="res://Scenes/dialog.tscn" id="5_ubucf"]
+[ext_resource type="Script" path="res://Scenes/DialogManager.gd" id="7_j55h0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qkvrp"]
 sky_top_color = Color(0.101961, 0.2, 0.486275, 1)
@@ -51,12 +51,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000510663, 1.16982, -4.8395
 [node name="Enemy" parent="." instance=ExtResource("3_n2u7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58992, 11.717)
 
-[node name="Dialog" parent="." instance=ExtResource("5_ubucf")]
-offset_left = 291.0
-offset_top = 463.0
-offset_right = -351.0
-offset_bottom = -12.0
+[node name="Apparition" parent="." instance=ExtResource("3_n2u7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.17984, 23.434)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_cr1km")
 autoplay = true
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("7_j55h0")
