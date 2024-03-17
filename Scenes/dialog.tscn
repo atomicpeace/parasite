@@ -1,9 +1,59 @@
-[gd_scene format=3 uid="uid://cxefe1ckmt6xx"]
+[gd_scene load_steps=5 format=3 uid="uid://cxefe1ckmt6xx"]
+
+[ext_resource type="Texture2D" uid="uid://bwoqs7mn2ayt6" path="res://Textures/dialogBox1.png" id="1_elchr"]
+[ext_resource type="Script" path="res://Scenes/dialog.gd" id="1_t70yt"]
+[ext_resource type="Texture2D" uid="uid://ddb5g0rh3tlf3" path="res://Textures/KnightPortrait.png" id="2_4edf0"]
+[ext_resource type="FontFile" uid="uid://cv6r0w0d4f4ht" path="res://Fonts/BroadaxeRevolution.ttf" id="2_wjyd5"]
 
 [node name="Dialog" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -120.0
+offset_bottom = -457.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_t70yt")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+offset_right = 506.0
+offset_bottom = 169.0
+texture = ExtResource("1_elchr")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_left = 9.0
+offset_top = 12.0
+offset_right = 141.0
+offset_bottom = 159.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_4edf0")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Text" type="Label" parent="."]
+layout_mode = 2
+offset_left = 150.0
+offset_top = 17.0
+offset_right = 493.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_wjyd5")
+theme_override_font_sizes/font_size = 48
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

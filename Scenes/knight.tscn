@@ -9,8 +9,23 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1rq3n"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_50e1p"]
-points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+[sub_resource type="BoxShape3D" id="BoxShape3D_fou5d"]
+size = Vector3(1, 1.91211, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yooim"]
+render_priority = 0
+shader = ExtResource("5_pskeb")
+shader_parameter/level1 = Color(0.266667, 0.00392157, 0.00392157, 1)
+shader_parameter/level2 = Color(0.435294, 0.0235294, 0.141176, 1)
+shader_parameter/level3 = Color(1, 0.823529, 0.772549, 1)
+shader_parameter/level4 = Color(1, 1, 1, 1)
+shader_parameter/threshold1 = 0.1
+shader_parameter/threshold2 = 0.4
+shader_parameter/threshold3 = 0.6
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d3qg0"]
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("ShaderMaterial_yooim")
 
 [sub_resource type="Animation" id="Animation_udvhx"]
 length = 0.001
@@ -39,6 +54,9 @@ tracks/1/keys = {
 "values": [Vector3(1.52891, 1.55683, -3.14159)]
 }
 
+[sub_resource type="Animation" id="Animation_m70c0"]
+resource_name = "Rebuke"
+
 [sub_resource type="Animation" id="Animation_dh86v"]
 resource_name = "Swing"
 length = 1.5
@@ -66,9 +84,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0.340849, -0.0698361, -0.664948), Vector3(0.341, 0.1, -0.665), Vector3(0.341, 0.0999999, -0.48524), Vector3(0.341, 0.0999999, -0.327956), Vector3(0.367699, 0.102892, -0.166271), Vector3(0.367699, 0.183821, -0.258689), Vector3(0.367699, 0.265866, -0.30742), Vector3(0.367699, 0.344409, -0.463292), Vector3(0.367699, 0.344409, -0.54608), Vector3(0.367699, 0.281993, -0.739177), Vector3(0.367699, 0.0170345, -0.816764), Vector3(0.367699, -0.0509057, -0.953836), Vector3(0.367699, -0.124587, -1.05089)]
 }
-
-[sub_resource type="Animation" id="Animation_m70c0"]
-resource_name = "Rebuke"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u350n"]
 _data = {
@@ -178,21 +193,6 @@ _data = {
 "RESET": SubResource("Animation_kqsuj")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yooim"]
-render_priority = 0
-shader = ExtResource("5_pskeb")
-shader_parameter/level1 = Color(0.266667, 0.00392157, 0.00392157, 1)
-shader_parameter/level2 = Color(0.435294, 0.0235294, 0.141176, 1)
-shader_parameter/level3 = Color(1, 0.823529, 0.772549, 1)
-shader_parameter/level4 = Color(1, 1, 1, 1)
-shader_parameter/threshold1 = 0.1
-shader_parameter/threshold2 = 0.4
-shader_parameter/threshold3 = 0.6
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_d3qg0"]
-lightmap_size_hint = Vector2i(12, 12)
-material = SubResource("ShaderMaterial_yooim")
-
 [node name="Knight" type="Node3D"]
 
 [node name="Knight" type="CharacterBody3D" parent="."]
@@ -203,26 +203,39 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.9
 mesh = SubResource("CapsuleMesh_1rq3n")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Knight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.877144, -0.00033015)
-shape = SubResource("ConvexPolygonShape3D_50e1p")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04023, -0.00033015)
+shape = SubResource("BoxShape3D_fou5d")
 
 [node name="Head" type="Node3D" parent="Knight"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 4.71009, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.27936, 0)
 script = ExtResource("2_dygys")
 
-[node name="Camera3D" type="Camera3D" parent="Knight/Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00326502, -2.99235, -0.617324)
+[node name="SpringArm3D" type="SpringArm3D" parent="Knight/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.345087, 0)
+spring_length = -0.5
+
+[node name="Camera3D" type="Camera3D" parent="Knight/Head/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0456798, 0.549174, -0.821973)
 current = true
 fov = 53.5
 far = 54.17
 
-[node name="Weapon" type="Node3D" parent="Knight/Head/Camera3D"]
+[node name="Shader2" type="MeshInstance3D" parent="Knight/Head/SpringArm3D/Camera3D"]
+transform = Transform3D(0.996173, 0.0577648, -0.065589, 0.068953, -0.0583064, 0.995915, 0.0537046, -0.996626, -0.0620658, -0.0016253, -0.238178, 0.0527619)
+mesh = SubResource("PlaneMesh_d3qg0")
+skeleton = NodePath("../Shader")
+
+[node name="Shader" type="MeshInstance3D" parent="Knight/Head/SpringArm3D/Camera3D"]
+transform = Transform3D(-0.998297, -0.0578755, 0.00727239, 0, 0.124675, 0.992198, -0.0583307, 0.990508, -0.124463, -0.00371312, -0.00191736, -0.237877)
+mesh = SubResource("PlaneMesh_d3qg0")
+
+[node name="Weapon" type="Node3D" parent="Knight/Head/SpringArm3D/Camera3D"]
 script = ExtResource("3_b8rcd")
 
-[node name="Sword" parent="Knight/Head/Camera3D/Weapon" instance=ExtResource("3_4bnqq")]
-transform = Transform3D(-0.013962, -0.999024, 0.0418716, 3.66089e-09, -0.0418757, -0.999122, 0.999902, -0.0139498, 0.000584674, 0.341, -0.07, -0.665)
+[node name="Sword" parent="Knight/Head/SpringArm3D/Camera3D/Weapon" instance=ExtResource("3_4bnqq")]
+transform = Transform3D(-0.0139683, -0.999024, 0.0418699, -1.06158e-07, -0.041874, -0.999122, 0.999902, -0.0139561, 0.000584805, 0.341, -0.07, -0.665)
 
-[node name="SwordAnim" type="AnimationPlayer" parent="Knight/Head/Camera3D/Weapon/Sword"]
+[node name="SwordAnim" type="AnimationPlayer" parent="Knight/Head/SpringArm3D/Camera3D/Weapon/Sword"]
 reset_on_save = false
 root_node = NodePath("../..")
 libraries = {
@@ -230,21 +243,21 @@ libraries = {
 }
 speed_scale = 4.0
 
-[node name="Torch" type="OmniLight3D" parent="Knight/Head/Camera3D/Weapon"]
+[node name="Torch" type="OmniLight3D" parent="Knight/Head/SpringArm3D/Camera3D/Weapon"]
 transform = Transform3D(0.995973, 0, -0.0896592, 0, 1, 0, 0.0896592, 0, 0.995973, 0.0429675, -0.00511754, 0.622884)
 light_energy = 16.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 distance_fade_enabled = true
 
-[node name="Torch" type="OmniLight3D" parent="Knight/Head/Camera3D/Weapon/Torch"]
+[node name="Torch_Light" type="OmniLight3D" parent="Knight/Head/SpringArm3D/Camera3D/Weapon/Torch"]
 transform = Transform3D(0.995972, 0, -0.0896592, 0, 1, 0, 0.0896592, 0, 0.995972, -0.20511, -0.188461, -2.10419)
 light_energy = 16.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 distance_fade_enabled = true
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Knight/Head/Camera3D/Weapon/Torch"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Knight/Head/SpringArm3D/Camera3D/Weapon/Torch"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.502788, 0.0476189, -1.20892)
 amount = 200
 lifetime = 0.05
@@ -255,17 +268,13 @@ draw_order = 3
 process_material = SubResource("ParticleProcessMaterial_ye5c7")
 draw_pass_1 = SubResource("QuadMesh_43y2r")
 
-[node name="TorchAnim" type="AnimationPlayer" parent="Knight/Head/Camera3D/Weapon/Torch"]
+[node name="TorchAnim" type="AnimationPlayer" parent="Knight/Head/SpringArm3D/Camera3D/Weapon/Torch"]
 libraries = {
 "": SubResource("AnimationLibrary_g2dq3")
 }
 
-[node name="Sketchfab_Scene" parent="Knight/Head/Camera3D/Weapon/Torch" instance=ExtResource("5_v0jv2")]
+[node name="Torch" parent="Knight/Head/SpringArm3D/Camera3D/Weapon/Torch" instance=ExtResource("5_v0jv2")]
 transform = Transform3D(0.995973, 0, 0.0896592, 0, 1, 0, -0.0896592, 0, 0.995973, -0.523816, -0.354297, -1.20212)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Knight/Head/Camera3D"]
-transform = Transform3D(-0.998297, -0.0578755, 0.00727239, 0, 0.124675, 0.992198, -0.0583307, 0.990508, -0.124463, -0.00371313, -0.00191736, -0.157112)
-mesh = SubResource("PlaneMesh_d3qg0")
-
-[connection signal="animation_finished" from="Knight/Head/Camera3D/Weapon/Sword/SwordAnim" to="Knight/Head/Camera3D/Weapon" method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="Knight/Head/Camera3D/Weapon/Torch/TorchAnim" to="Knight/Head/Camera3D/Weapon" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Knight/Head/SpringArm3D/Camera3D/Weapon/Sword/SwordAnim" to="Knight/Head/SpringArm3D/Camera3D/Weapon" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Knight/Head/SpringArm3D/Camera3D/Weapon/Torch/TorchAnim" to="Knight/Head/SpringArm3D/Camera3D/Weapon" method="_on_animation_player_animation_finished"]

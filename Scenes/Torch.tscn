@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://nxryl0utf7u3"]
+[gd_scene load_steps=3 format=3 uid="uid://nxryl0utf7u3"]
 
 [ext_resource type="PackedScene" uid="uid://c3eq71f0cdmdq" path="res://Models/Torch/torch.glb" id="1_ql72l"]
 
-[node name="Sketchfab_Scene" instance=ExtResource("1_ql72l")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_0nxls"]
+size = Vector3(20, 20, 33.67)
+
+[node name="Torch" instance=ExtResource("1_ql72l")]
 
 [node name="Sketchfab_model" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(0.0231486, 0, 0, 0, -1.01186e-09, 0.0231486, 0, -0.0231486, -1.01186e-09, 0.0134897, -0.000970602, 0.00173086)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.204773, -0.643127, 16.335)
+shape = SubResource("BoxShape3D_0nxls")

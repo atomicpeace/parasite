@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5up0g7f33h8d"]
+[gd_scene load_steps=7 format=3 uid="uid://b5up0g7f33h8d"]
 
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_flt1l"]
+[ext_resource type="FontFile" uid="uid://cv6r0w0d4f4ht" path="res://Fonts/BroadaxeRevolution.ttf" id="2_36qou"]
+[ext_resource type="AudioStream" uid="uid://c3id6lf2b4fg0" path="res://Audio/FLESHDEEP.ogg" id="2_h83l2"]
+[ext_resource type="FontFile" uid="uid://b2qk461dwiup8" path="res://Fonts/KJV1611.otf" id="3_7x63i"]
+
+[sub_resource type="Theme" id="Theme_6lnuj"]
+default_font = ExtResource("3_7x63i")
+default_font_size = 64
+
+[sub_resource type="Theme" id="Theme_ogr52"]
+default_font = ExtResource("2_36qou")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,32 +21,163 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_flt1l")
 
-[node name="Main" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 314.0
-offset_top = 233.0
-offset_right = 815.0
-offset_bottom = 501.0
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.435294, 0.0235294, 0.141176, 1)
 
-[node name="Start" type="Button" parent="Main"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_h83l2")
+autoplay = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -258.5
+offset_top = -81.0
+offset_right = 258.5
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_6lnuj")
+text = "FLESH DEEP"
+fit_content = true
+scroll_active = false
+tab_size = 5
+
+[node name="Main" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_ogr52")
+
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer/Main"]
 layout_mode = 2
 text = "Start
 "
 
-[node name="Options" type="Button" parent="Main"]
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/Main"]
 layout_mode = 2
 text = "Options
 "
 
-[node name="Quit" type="Button" parent="Main"]
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer/Main"]
+layout_mode = 2
+text = "Credits
+"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/Main"]
 layout_mode = 2
 text = "Quit
 "
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Options" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+current_tab = 1
+
+[node name="Controls" type="TabBar" parent="MarginContainer/Options"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Options/Controls"]
 layout_mode = 0
-offset_left = 520.0
-offset_top = 126.0
-offset_right = 612.0
-offset_bottom = 153.0
-text = "FLESH DEEP"
+offset_left = 19.0
+offset_top = 15.0
+offset_right = 140.0
+offset_bottom = 333.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Options/Controls/MarginContainer"]
+layout_mode = 2
+
+[node name="Forward" type="Label" parent="MarginContainer/Options/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Walk Forward
+"
+
+[node name="Backward" type="Label" parent="MarginContainer/Options/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Walk Backward
+"
+
+[node name="Left" type="Label" parent="MarginContainer/Options/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Walk Left
+"
+
+[node name="Right" type="Label" parent="MarginContainer/Options/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Walk Right
+"
+
+[node name="Sword" type="Label" parent="MarginContainer/Options/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Swing Sword"
+
+[node name="Torch" type="Label" parent="MarginContainer/Options/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Swing Torch
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Options/Controls"]
+layout_mode = 2
+offset_left = 283.0
+offset_top = 296.0
+offset_right = 399.0
+offset_bottom = 332.0
+
+[node name="Cancel" type="Button" parent="MarginContainer/Options/Controls/HBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="Apply" type="Button" parent="MarginContainer/Options/Controls/HBoxContainer"]
+layout_mode = 2
+text = "Apply
+"
+
+[node name="Audio" type="TabBar" parent="MarginContainer/Options"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Options/Audio"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Options/Audio/MarginContainer"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/Options/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Credits" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Credits"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Game by AtomicPeace
+
+Music by a friend who currently wishes to remain uncredited :)
+
+[u]Creative Commons Assets[/u]
+
+[url=https://kickin-it-studios.itch.io/low-poly-weapon-pack]Low Poly Weapon Pack by Kickin It Studios[/url]
+Pixel Texture Pack by Jestan
+Torch by Alex Curteman
+
+
+"
+fit_content = true
