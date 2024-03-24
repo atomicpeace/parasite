@@ -2,6 +2,14 @@ extends Control
 
 @onready var label = $Text
 @onready var timer = $Timer
+@onready var portrait = $Portrait
+@onready var knightPortrait = preload("res://Textures/KnightPortrait.png")
+@onready var parasitePortrait = preload("res://Textures/KnightPortrait_inverse.png")
+@onready var portraitSelections = {
+	"knight": knightPortrait,
+	"parasite": parasitePortrait
+}
+
 
 var text = ""
 var letter_index = 0
@@ -13,7 +21,7 @@ var punctuation_time = 0.2
 signal finished_displaying()
 
 func _ready():
-	display_text("Something to do with multiple punct?")
+	pass
 	
 func display_text(text_to_display: String):
 	text = text_to_display
@@ -23,13 +31,15 @@ func display_text(text_to_display: String):
 	
 func _display_letter():
 	
+
 	label.text += text[letter_index]
 	
 	letter_index += 1
 	
 	if letter_index >= text.length():
-		return
 		finished_displaying.emit()
+		return
+		
 		
 	
 	
@@ -47,6 +57,10 @@ func _display_letter():
 func _on_timer_timeout():
 	if letter_index < text.length():
 		_display_letter()
+		
+func change_portrait(portrait_name: String):
+	portrait.texture = portraitSelections[portrait_name]
+	
 	
 	
 
